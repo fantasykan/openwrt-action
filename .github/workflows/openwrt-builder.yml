@@ -196,9 +196,9 @@ jobs:
          MODULE_DEVICE_TABLE(of, pwm_mediatek_of_match);
         ' > /tmp/pwm-mediatek.c.patch
         
-        make -j $(nproc) target/linux/{{prereq,clean,download,prepare}}
+        #make -j $(nproc) target/linux/{{prereq,clean,download,prepare}}
         patch build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_filogic/linux-6.1.82/drivers/pwm/pwm-mediatek.c < /tmp/pwm-mediatek.c.patch
-        make -j $(nproc) target/linux/compile
+        #make -j $(nproc) target/linux/compile
 
     - name: Compile the firmware
       id: compile
