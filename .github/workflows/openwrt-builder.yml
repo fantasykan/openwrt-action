@@ -82,7 +82,7 @@ jobs:
       id: toolchain
       run: |
         cd openwrt
-        make -j $(nproc) toolchain/{clean,install}
+        #make -j $(nproc) toolchain/{clean,install}
         ### Executed in   34.42 mins
 
     - name: make a patch
@@ -196,7 +196,7 @@ jobs:
          MODULE_DEVICE_TABLE(of, pwm_mediatek_of_match);
         ' > /tmp/pwm-mediatek.c.patch
         
-        #make -j $(nproc) target/linux/{{prereq,clean,download,prepare}}
+        make -j $(nproc) target/linux/{{prereq,clean,download,prepare}}
         patch build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_filogic/linux-6.1.82/drivers/pwm/pwm-mediatek.c < /tmp/pwm-mediatek.c.patch
         #make -j $(nproc) target/linux/compile
 
