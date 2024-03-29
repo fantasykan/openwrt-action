@@ -82,7 +82,7 @@ jobs:
       id: toolchain
       run: |
         cd openwrt
-        make -j $(nproc) toolchain/{{clean,install}}
+        make -j $(nproc) toolchain/{clean,install}
         ### Executed in   34.42 mins
 
     - name: make a patch
