@@ -66,7 +66,7 @@ jobs:
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
-
+      
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
@@ -78,14 +78,13 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    - name: make toolchain
+    - name: Make toolchain
       id: toolchain
       run: |
         cd openwrt
         make -j $(nproc) toolchain/{clean,install}
-        ### Executed in   34.42 mins
-
-    - name: make a patch
+        
+    - name: Make a patch
       id: patch
       run: |
         cd openwrt
@@ -195,10 +194,10 @@ jobs:
          };
          MODULE_DEVICE_TABLE(of, pwm_mediatek_of_match);
         ' > /tmp/pwm-mediatek.c.patch
-        
         make -j $(nproc) target/linux/{prereq,clean,download,prepare}
         patch build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_filogic/linux-6.1.82/drivers/pwm/pwm-mediatek.c < /tmp/pwm-mediatek.c.patch
         #make -j $(nproc) target/linux/compile
+
 
     - name: Compile the firmware
       id: compile
